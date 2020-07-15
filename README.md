@@ -15,8 +15,7 @@ https://fas.org/sgp/crs/misc/R43579.pdf
 ---
 
 1. Who are the veterans that do not enroll in the VA?  
-2. Are they succeeding or does the data indicate they are struggling? 
-3. Do Veterans that choose not to enroll have identifiable characteristics?  
+2. Do Veterans that choose not to enroll have identifiable characteristics?  
 
 ## Data
 ---
