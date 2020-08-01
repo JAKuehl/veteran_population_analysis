@@ -62,20 +62,32 @@ The baseline model for the VA Enrollment feature, ```HINS6```, is .697.
 
 ![](images/model_tree.png)
    
-* **Veteran Feature Group** - This is the best performing feature group with a score of .81.  Considering the highly subjective nature of the data, any scores above .8 demonstrate a very good fit.  Additionlly, the test score of .81 indicates minimal variance.  
-* **Health Group** -
-* **Work/Income Group** - 
-* **Ethnicity Group** - While this group conatianed several features that proved to be statistically significant, the model as a whole did not imporve over the Baseline.
-* **Lifestyle Group** - Baseline.  No feaures
-* **General Group** - While this group conatianed several features that proved to be statistically significant, the model as a whole did not imporve over the Baseline.
-* **Education Group** - While this group conatianed several features that proved to be statistically significant, the model as a whole did not imporve over the Baseline.
-* **Location Group** - Baseline. No features
+* **Veteran Feature Group** - This is the best-performing feature group with a score of .81.  Considering the highly subjective nature of the data, any scores above .8 demonstrate a very good fit.  Additionally, the test score of .81 indicates minimal variance.  
+* **Health Group** -  Similarly, the Health group with a train score of .772 and a test score of .772, which demonstrates a good fit with almost no variance.  However, most of the statistically significant features only had a probability between .55 and .45, except for Disability Rating   (```DRAT```).  Probabilities like that are little better than a coin toss.
+* **Work/Income Group** - The Income Group had a train and test of a score of .716.  This is only a very modest improvement over the Baseline. Like the previous model, only one feature, Other Income adjusted for inflation(```OIP_adj```), had a significant probability.
+* **Ethnicity Group** - While this group contained several features that proved to be statistically significant, the model did not improve over the Baseline.
+* **Lifestyle Group** - This model did not improve over the Baseline, nor did any feature prove statistically significant.
+* **General Group** - While this group contained several features that proved to be statistically significant, the model as a whole did not improve over the Baseline.
+* **Education Group** - While this group contained several features that proved to be statistically significant, the model as a whole did not improve over the Baseline.
+* **Location Group** - This model did not improve over the Baseline, nor did any feature prove to be statistically significant.
 
 
 #### Final Combined Model
-The final model 
+For the final model, I tested every feature that demonstrated statistical significance in the previous groups.  Then dismissed any feature that did not achieve statistical significance in the larger model.  
 
-The surprises are more about what variables are not important as opposed to those that are.
+The final model used 41 features, produced a score of .793 for both the test and train data, and improved .1 on the Baseline.  Like the Group Models, most of the statistically significant features have indecisive probabilities between .45 and .55. Several features did stand out with more substantial probabilities.  To be clear, the closer the probability is to 1, the LESS likely the veteran will enroll in the VA.
+
+* Has Disability Rating (```DRATX```)   - .643
+* Military Service (```MIL```)     - .256
+* Did not Serve between 1975-1990 (```MLPCD_0```) - .097
+* Has TRI-CARE Health Insurance (```FHINS5P```) - .321
+* Attained Bachelor's Degree (```SCHL_21```) - .064
+* Attained Master's Degree (```SCHL_22```) - .125
+* Attianed Professional Degree beyond Master's (```SCHL_23```) - .257
+* Attained Doctorate (```SCHL_24```) - .312
+* Science or Engineering Degree (```SCIENGP```) - .963
+
+
 
 ## Project Organization
 ---
@@ -105,14 +117,11 @@ project-directory
 |__ presentation.pdf
 |__ README.md
 ```
-## Additional Resources
----
-A google document of all additional research and resources can be found [here](https://docs.google.com/document/d/1-CDyHBpFiIGXZlgoX5nltieaSrE90ro81Xj3a7jC2Mk/edit?usp=sharing).
 
 ## Follow On Work
 ---
 This data set contains a great amount of incites that are outside of today's project.  Several ways I plan to continue work on this data set:
 
-* Clustering for grouping 
-* NN for classification
-* Other mining techniques
+* Attempt classification using Neural Networks 
+* Perform a deeper comparison veteran traits versus the general population
+* Predict income variables based on enrollment and other veteran features
